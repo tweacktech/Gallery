@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Wishlist;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
+use DB;
 
 class WishlistController extends Controller
 {
@@ -17,9 +18,10 @@ class WishlistController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $wishlists = $user->wishlists;
+        $wishlists = Wishlist::where('user_id',$user->id)->get();
+         $count = DB::table('carts')->where('user_id',$user)->count();
 
-        return view('wishlists.index', compact('wishlists'));
+        return view('customer.wishlist', compact('wishlists','count'));
     }
 
     public function store(Request $request)

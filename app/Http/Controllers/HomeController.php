@@ -34,6 +34,23 @@ class HomeController extends Controller
     }
 
 
+     public function update()
+    {
+        $user = Auth::user('id');
+       $count = DB::table('carts')->where('user_id',$user->id)->count();
+
+        return view('customer.update_user',compact('user','count'));
+    }
+
+     public function profile()
+    {
+        $user = Auth::user('id');
+       $count = DB::table('carts')->where('user_id',$user->id)->count();
+
+        return view('customer.profile',compact('user','count'));
+    }
+
+
 
 
     public function handleGoogleCallback(Request $request)

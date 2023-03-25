@@ -6,15 +6,15 @@ use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
-
+use DB;
 class OrderController extends Controller
 {
     public function index()
     {
         $user = Auth::user();
-        $orders = $user->orders;
-
-        return view('orders.index', compact('orders'));
+        $order = Order::where('user_id',$user->id);
+        $count = DB::table('carts')->where('user_id',$user->id)->count();
+        return view('customer.order', compact('order','count'));
     }
 
     public function store(Request $request)

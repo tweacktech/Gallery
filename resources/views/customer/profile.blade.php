@@ -11,15 +11,32 @@
                         <h1 style="font-size: 2em; font-weight: bolder;" class=" py-3 text-center text-light">Gallery BEBE Account</h1></div>
                         <div>
                             <ul class="dashboard-items">
-                                <li><a href="{{url('orders')}}">Orders</a></li>
-                                <li><a href="{{url('wishlist')}}"> Wishlist</a></li>
-                                <li>Pending Review</li>
-                                <li><a href="{{url('profile')}}"> Profile</a></li>
-                                <li><a href="{{url('account_manager')}}">Account Manager</li>
+                                <li>
+                                <img src="bundles/images/svgs/Order.svg" alt=""> 
+                                <a href="{{url('order')}}" class="ms-2">Orders</a>
+                                </li>
+                                <li><img src="bundles/images/lit-icons/wishlist.png" alt=""> 
+                                    <a href="{{url('wishlist')}}" class="ms-2">Wishlist</a></li>
+                                <li><img src="bundles/images/lit-icons/reviw.png" alt="">
+                                    <span class="ms-2">Pending
+                                        Review</span></li>
+                                <li><img src="bundles/images/lit-icons/recently-viewed.png" alt=""> <span class="ms-2">Recently Viewed</span></li>
+                                <li><img src="bundles/images/lit-icons/user-profile.png" alt="">
+                                 <a  href="{{url('profile')}}"  class="ms-2">Profile</a></li>
+                                <li><img src="bundles/images/lit-icons/settings.png" alt=""> <a href="{{url('Update')}}" class="ms-2">Account Manager</a></li>
+                            <li class="pt-4">
+                              <a class="btn btn-primary" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </li>
                             </ul>
-                            <div class="otp-btn-container mx-auto my-5">
-                                <button type="button">LOGOUT</button>
-                              </div>
+                             
                         </div>
                     </div>
                 </div>
@@ -31,12 +48,12 @@
                         </div>
                         <div class="col-6">
                             <h5 class="mb-0 contact-header">ACCOUNT DETAILS</h5>
-                            <div class="container-fluid contact-area"><h6>NSIKAK NELSON</h6>
+                            <div class="container-fluid contact-area"><h6>{{Auth::user()->first_name." ".Auth::user()->last_name}}</h6>
                             </div>
                         </div>
                         <div class="col-6">
                             <h5 class="mb-0 contact-header">ADDRESS BOOK</h5>
-                            <div class="container-fluid contact-area"><p>24 !.T Igbani Streeet, Jabi Abuja Nigeria</p>
+                            <div class="container-fluid contact-area"><p>{{Auth::user()->last_name}}</p>
                             </div>
                         </div>
                         <div class="col-6">

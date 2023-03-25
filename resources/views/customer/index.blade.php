@@ -77,280 +77,60 @@
     <section class="adjust">
 
       <div class="container px-16">
-        <div style="width: fit-content; margin: 2rem auto;">
-          <button type="button" class="btn btn-danger">New</button>
-        </div>
-        <div class="">
-          <div class="d-flex my-4 justify-content-center">
-            <h3 class="hotspot me-3"><a href="">Top sales</a></h3>
-            <h3 class="hotspot me-3 mx-md-5"><a href="">Trending</a></h3>
-            <h3 class="hotspot me-3"><a href="">New Arrivals</a></h3>
+     
+      <div class="px-16">
+        
+          <div class="py-4">
+            <h2 class="text-center bold-type">Latest</h2>
           </div>
         </div>
+
+      
         <div class="">
           <div class="my-logo">
-            <div>
+            
+            @foreach($products as $products)
+            
+            <div class="pt-4">
               <div class="hovereffect">
-                <div class="slider-image"><img src="bundles/images/landing/product-cover-3.png" class="d-block w-100"
+                <div class=""><img src="bundles/images/landing/product-cover-4.png" class="d-block w-100"
                     alt="...">
                 </div>
                 <!-- <img class="img-responsive" src="bundles/images/landing/card-cover-5.jpg" alt=""> -->
                 <div class="overlay">
                   <h2>
                     <div>
-                      <button style=" font-size: 10px; padding: 0.4rem;" type="button"
-                        class="btn btn-danger">sales</button>
+                      <a href="{{url('details',$products->id)}}" style=" font-size: 10px; padding: 0.4rem;" type="button"
+                        class="btn btn-info">Details</a>
                     </div>
                   </h2>
                   <p>
                   <div class="div">
-                    <div class="d-flex card-icons">
+                    <div class="card-icons">
                       <div>
-                        <a href="">
-                          <img src="bundles/images/lit-icons/Vector.png" alt="">
-                        </a>
+                        <form method="POST" action="{{url('wishlist')}}">
+                          @csrf
+                          <input type="text" hidden name="product_id" value="{{$products->id}}">
+                                                
+                        <button type="submit">
+                            <img src="bundles/images/lit-icons/Vector.png" alt="">
+                        </button>
+                        </form>
+                       
                       </div>
                       <div>
-                        <a href="">
-                          <img src="bundles/images/lit-icons/icn favorite.png" alt="">
-                        </a>
-                      </div>
-                      <div>
-                        <a href="">
-                          <img src="bundles/images/lit-icons/icon-eye.png" alt="">
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  </p>
-                </div>
-              </div>
-              <div class="p-3">
-                <div class="d-flex justify-content-between">
-                  <div>
-                    <h6 class="dept-head-6">English Department</h6>
-                  </div>
-                  <div>
-                    <button class="btn btn-sm rating-btn">
-                      <i class="fa-solid star fa-star"></i> 4.9
-                    </button>
-                  </div>
-                </div>
-                <div class="slider-text">
-                  <p>We focus on ergonomics and meeting
-                    you where you work. It's only a
-                    keystroke away.</p>
-                </div>
-                <div>
-                  <p class="amount"><b>NGN 5000.48</b></p>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div class="hovereffect">
-                <div class="slider-image"><img src="bundles/images/landing/product-cover-2.png" class="d-block w-100"
-                    alt="...">
-                </div>
-                <!-- <img class="img-responsive" src="bundles/images/landing/card-cover-5.jpg" alt=""> -->
-                <div class="overlay">
-                  <h2>
-                    <div>
-                      <button style=" font-size: 10px; padding: 0.4rem;" type="button"
-                        class="btn btn-danger">sales</button>
-                    </div>
-                  </h2>
-                  <p>
-                  <div class="div">
-                    <div class="d-flex card-icons">
-                      <div>
-                        <a href="">
-                          <img src="bundles/images/lit-icons/Vector.png" alt="">
-                        </a>
-                      </div>
-                      <div>
-                        <a href="">
-                          <img src="bundles/images/lit-icons/icn favorite.png" alt="">
-                        </a>
-                      </div>
-                      <div>
-                        <a href="">
-                          <img src="bundles/images/lit-icons/icon-eye.png" alt="">
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  </p>
-                </div>
-              </div>
-              <div class="p-3">
-                <div class="d-flex justify-content-between">
-                  <div>
-                    <h6 class="dept-head-6">English Department</h6>
-                  </div>
-                  <div>
-                    <button class="btn btn-sm rating-btn">
-                      <i class="fa-solid star fa-star"></i> 4.9
-                    </button>
-                  </div>
-                </div>
-                <div class="slider-text">
-                  <p>We focus on ergonomics and meeting
-                    you where you work. It's only a
-                    keystroke away.</p>
-                </div>
-                <div>
-                  <p class="amount"><b>NGN 5000.48</b></p>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div class="hovereffect">
-                <div class="slider-image"><img src="bundles/images/landing/product-cover-4.png" class="d-block w-100"
-                    alt="...">
-                </div>
-                <!-- <img class="img-responsive" src="bundles/images/landing/card-cover-5.jpg" alt=""> -->
-                <div class="overlay">
-                  <h2>
-                    <div>
-                      <button style=" font-size: 10px; padding: 0.4rem;" type="button"
-                        class="btn btn-danger">sales</button>
-                    </div>
-                  </h2>
-                  <p>
-                  <div class="div">
-                    <div class="d-flex card-icons">
-                      <div>
-                        <a href="">
-                          <img src="bundles/images/lit-icons/Vector.png" alt="">
-                        </a>
-                      </div>
-                      <div>
-                        <a href="">
-                          <img src="bundles/images/lit-icons/icn favorite.png" alt="">
-                        </a>
-                      </div>
-                      <div>
-                        <a href="">
-                          <img src="bundles/images/lit-icons/icon-eye.png" alt="">
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  </p>
-                </div>
-              </div>
-              <div class="p-3">
-                <div class="d-flex justify-content-between">
-                  <div>
-                    <h6 class="dept-head-6">English Department</h6>
-                  </div>
-                  <div>
-                    <button class="btn btn-sm rating-btn">
-                      <i class="fa-solid star fa-star"></i> 4.9
-                    </button>
-                  </div>
-                </div>
-                <div class="slider-text">
-                  <p>We focus on ergonomics and meeting
-                    you where you work. It's only a
-                    keystroke away.</p>
-                </div>
-                <div>
-                  <p class="amount"><b>NGN 5000.48</b></p>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div class="hovereffect">
-                <div class="slider-image"><img src="bundles/images/landing/product-cover-1.png" class="d-block w-100"
-                    alt="...">
-                </div>
-                <!-- <img class="img-responsive" src="bundles/images/landing/card-cover-5.jpg" alt=""> -->
-                <div class="overlay">
-                  <h2>
-                    <div>
-                      <button style=" font-size: 10px; padding: 0.4rem;" type="button"
-                        class="btn btn-danger">sales</button>
-                    </div>
-                  </h2>
-                  <p>
-                  <div class="div">
-                    <div class="d-flex card-icons">
-                      <div>
-                        <a href="">
-                          <img src="bundles/images/lit-icons/Vector.png" alt="">
-                        </a>
-                      </div>
-                      <div>
-                        <a href="">
-                          <img src="bundles/images/lit-icons/icn favorite.png" alt="">
-                        </a>
-                      </div>
-                      <div>
-                        <a href="">
-                          <img src="bundles/images/lit-icons/icon-eye.png" alt="">
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  </p>
-                </div>
-              </div>
-              <div class="p-3">
-                <div class="d-flex justify-content-between">
-                  <div>
-                    <h6 class="dept-head-6">English Department</h6>
-                  </div>
-                  <div>
-                    <button class="btn btn-sm rating-btn">
-                      <i class="fa-solid star fa-star"></i> 4.9
-                    </button>
-                  </div>
 
-                </div>
-                <div class="slider-text">
-                  <p>We focus on ergonomics and meeting
-                    you where you work. It's only a
-                    keystroke away.</p>
-                </div>
-                <div>
-                  <p class="amount"><b>NGN 5000.48</b></p>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <div class="hovereffect">
-                <div class="slider-image"><img src="bundles/images/landing/product-cover-3.png" class="d-block w-100"
-                    alt="...">
-                </div>
-                <!-- <img class="img-responsive" src="bundles/images/landing/card-cover-5.jpg" alt=""> -->
-                <div class="overlay">
-                  <h2>
-                    <div>
-                      <button style=" font-size: 10px; padding: 0.4rem;" type="button"
-                        class="btn btn-danger">sales</button>
-                    </div>
-                  </h2>
-                  <p>
-                  <div class="div">
-                    <div class="d-flex card-icons">
-                      <div>
-                        <a href="">
-                          <img src="bundles/images/lit-icons/Vector.png" alt="">
-                        </a>
-                      </div>
-                      <div>
-                        <a href="">
+                         <form method="POST" action="{{url('cart')}}">
+                          @csrf
+                          <input type="text" hidden name="product_id" value="{{$products->id}}">
+                                                
+                        <button type="submit">
                           <img src="bundles/images/lit-icons/icn favorite.png" alt="">
-                        </a>
+                        </button>
+                        </form>
+                       
                       </div>
-                      <div>
-                        <a href="">
-                          <img src="bundles/images/lit-icons/icon-eye.png" alt="">
-                        </a>
                       </div>
-                    </div>
                   </div>
                   </p>
                 </div>
@@ -358,7 +138,7 @@
               <div class="p-3">
                 <div class="d-flex justify-content-between">
                   <div>
-                    <h6 class="dept-head-6">English Department</h6>
+                    <h6 class="dept-head-6">{{$products->name}}</h6>
                   </div>
                   <div>
                     <button class="btn btn-sm rating-btn">
@@ -366,261 +146,35 @@
                     </button>
                   </div>
                 </div>
-                <div class="slider-text">
-                  <p>We focus on ergonomics and meeting
-                    you where you work. It's only a
-                    keystroke away.</p>
+                <div class="text">
+                  <p>{{$products->description}}.</p>
                 </div>
                 <div>
-                  <p class="amount"><b>NGN 5000.48</b></p>
+                  <p class="amount"><b>₦ {{$products->price}}</b></p>
                 </div>
               </div>
             </div>
-            <div>
-              <div class="hovereffect">
-                <div class="slider-image"><img src="bundles/images/landing/product-cover-2.png" class="d-block w-100"
-                    alt="...">
-                </div>
-                <!-- <img class="img-responsive" src="bundles/images/landing/card-cover-5.jpg" alt=""> -->
-                <div class="overlay">
-                  <h2>
-                    <div>
-                      <button style=" font-size: 10px; padding: 0.4rem;" type="button"
-                        class="btn btn-danger">sales</button>
-                    </div>
-                  </h2>
-                  <p>
-                  <div class="div">
-                    <div class="d-flex card-icons">
-                      <div>
-                        <a href="">
-                          <img src="bundles/images/lit-icons/Vector.png" alt="">
-                        </a>
-                      </div>
-                      <div>
-                        <a href="">
-                          <img src="bundles/images/lit-icons/icn favorite.png" alt="">
-                        </a>
-                      </div>
-                      <div>
-                        <a href="">
-                          <img src="bundles/images/lit-icons/icon-eye.png" alt="">
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  </p>
-                </div>
-              </div>
-              <div class="p-3">
-                <div class="d-flex justify-content-between">
-                  <div>
-                    <h6 class="dept-head-6">English Department</h6>
-                  </div>
-                  <div>
-                    <button class="btn btn-sm rating-btn">
-                      <i class="fa-solid star fa-star"></i> 4.9
-                    </button>
-                  </div>
-                </div>
-                <div class="slider-text">
-                  <p>We focus on ergonomics and meeting
-                    you where you work. It's only a
-                    keystroke away.</p>
-                </div>
-                <div>
-                  <p class="amount"><b>NGN 5000.48</b></p>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div class="hovereffect">
-                <div class="slider-image"><img src="bundles/images/landing/product-cover-4.png" class="d-block w-100"
-                    alt="...">
-                </div>
-                <!-- <img class="img-responsive" src="bundles/images/landing/card-cover-5.jpg" alt=""> -->
-                <div class="overlay">
-                  <h2>
-                    <div>
-                      <button style=" font-size: 10px; padding: 0.4rem;" type="button"
-                        class="btn btn-danger">sales</button>
-                    </div>
-                  </h2>
-                  <p>
-                  <div class="div">
-                    <div class="d-flex card-icons">
-                      <div>
-                        <a href="">
-                          <img src="bundles/images/lit-icons/Vector.png" alt="">
-                        </a>
-                      </div>
-                      <div>
-                        <a href="">
-                          <img src="bundles/images/lit-icons/icn favorite.png" alt="">
-                        </a>
-                      </div>
-                      <div>
-                        <a href="">
-                          <img src="bundles/images/lit-icons/icon-eye.png" alt="">
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  </p>
-                </div>
-              </div>
-              <div class="p-3">
-                <div class="d-flex justify-content-between">
-                  <div>
-                    <h6 class="dept-head-6">English Department</h6>
-                  </div>
-                  <div>
-                    <button class="btn btn-sm rating-btn">
-                      <i class="fa-solid star fa-star"></i> 4.9
-                    </button>
-                  </div>
-                </div>
-                <div class="slider-text">
-                  <p>We focus on ergonomics and meeting
-                    you where you work. It's only a
-                    keystroke away.</p>
-                </div>
-                <div>
-                  <p class="amount"><b>NGN 5000.48</b></p>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div class="hovereffect">
-                <div class="slider-image"><img src="bundles/images/landing/product-cover-1.png" class="d-block w-100"
-                    alt="...">
-                </div>
-                <!-- <img class="img-responsive" src="bundles/images/landing/card-cover-5.jpg" alt=""> -->
-                <div class="overlay">
-                  <h2>
-                    <div>
-                      <button style=" font-size: 10px; padding: 0.4rem;" type="button"
-                        class="btn btn-danger">sales</button>
-                    </div>
-                  </h2>
-                  <p>
-                  <div class="div">
-                    <div class="d-flex card-icons">
-                      <div>
-                        <a href="">
-                          <img src="bundles/images/lit-icons/Vector.png" alt="">
-                        </a>
-                      </div>
-                      <div>
-                        <a href="">
-                          <img src="bundles/images/lit-icons/icn favorite.png" alt="">
-                        </a>
-                      </div>
-                      <div>
-                        <a href="">
-                          <img src="bundles/images/lit-icons/icon-eye.png" alt="">
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  </p>
-                </div>
-              </div>
-              <div class="p-3">
-                <div class="d-flex justify-content-between">
-                  <div>
-                    <h6 class="dept-head-6">English Department</h6>
-                  </div>
-                  <div>
-                    <button class="btn btn-sm rating-btn">
-                      <i class="fa-solid star fa-star"></i> 4.9
-                    </button>
-                  </div>
-
-                </div>
-                <div class="slider-text">
-                  <p>We focus on ergonomics and meeting
-                    you where you work. It's only a
-                    keystroke away.</p>
-                </div>
-                <div>
-                  <p class="amount"><b>NGN 5000.48</b></p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
+            @endforeach
         </div>
+
+
         <div class="mt-5">
           <div class="py-4">
             <h2 class="text-center bold-type">Categories</h2>
           </div>
         </div>
+
         <div>
           <div class="container-fluid">
             <div id="my-slider-2" class="my-slider-2">
+              @foreach($category as $Category)
               <div>
                 <div class="icon-bg-1 icon-body"><img class="d-block w-100"
-                    src="bundles/images/lit-icons/pacifier 1.png" alt="">
+                    src="{{url('bundles/images/lit-icons/pacifier 1.png')}}" alt="">
                 </div>
               </div>
-              <div>
-                <div class="icon-bg-2 icon-body"><img class="d-block w-100"
-                    src="bundles/images/lit-icons/hair-brush 1.png" alt=""></div>
-              </div>
-              <div>
-                <div class="icon-bg-3 icon-body"><img class="d-block w-100"
-                    src="bundles/images/lit-icons/baby-plate 1.png" alt=""></div>
-              </div>
-              <div>
-                <div class="icon-bg-4 icon-body"><img class="d-block w-100"
-                    src="bundles/images/lit-icons/breastfeeding 1.png" alt=""></div>
-              </div>
-              <div>
-                <div class="icon-bg-5 icon-body"><img class="d-block w-100" src="bundles/images/lit-icons/baby 1.png"
-                    alt="">
-                </div>
-              </div>
-              <div>
-                <div class="icon-bg-6 icon-body">
-                  <img class="d-block w-100" src="bundles/images/lit-icons/teether 1.png"
-                    alt="">
-                  </div>
-              </div>
-              <div>
-                <div class="icon-bg-1 icon-body">
-                  <img class="d-block w-100"
-                    src="bundles/images/lit-icons/pacifier 1.png" alt="">
-                </div>
-              </div>
-              <div>
-                <div class="icon-bg-2 icon-body">
-                  <img class="d-block w-100"
-                    src="bundles/images/lit-icons/hair-brush 1.png" alt="">
-                  </div>
-              </div>
-              <div>
-                <div class="icon-bg-3 icon-body">
-                  <img class="d-block w-100"
-                    src="bundles/images/lit-icons/baby-plate 1.png" alt="">
-                  </div>
-              </div>
-              <div>
-                <div class="icon-bg-4 icon-body"><img class="d-block w-100"
-                    src="bundles/images/lit-icons/breastfeeding 1.png" alt=""></div>
-              </div>
-              <div>
-                <div class="icon-bg-5 icon-body"><img class="d-block w-100" src="bundles/images/lit-icons/baby 1.png"
-                    alt="">
-                </div>
-              </div>
-              <div>
-                <div class="icon-bg-6 icon-body"><img class="d-block w-100" src="bundles/images/lit-icons/teether 1.png"
-                    alt=""></div>
-              </div>
-
-            </div>
+              @endforeach
+             </div>
           </div>
         </div>
 
@@ -719,6 +273,9 @@
           </div>
         </div>
       </div>
+        
+
+
     </section>
 
 

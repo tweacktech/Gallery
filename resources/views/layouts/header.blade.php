@@ -73,6 +73,9 @@
                         @else
                 <li>
                   <a class="dropdown-item" href="{{url('/dashboard')}}">DASHBOARD</a>
+                </li> 
+                <li>
+                  <a class="dropdown-item" href="{{url('/order')}}">ORDERS</a>
                 </li>
                 <li>
                                   <a class="dropdown-item" href="{{ route('logout') }}"
@@ -138,12 +141,12 @@
                 <!-- Cart -->
                 <p style="font-size: 0.7rem;" class="me-2 pt-2 mb-0">Add item inside my bag</p>
                
-                  <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink"
-                    role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                  <a class="text-reset " href="{{url('wishlist')}}" id="navbarDropdownMenuLink"
+                    >
                     <!-- <img src="/bundles/images/lit-icons/Icon.png" alt=""> -->
                     <img src="{{url('bundles/images/lit-icons/Icon.png')}}" style="margin-right: -1rem;" alt="">
 
-                    <!-- <i class="fas fa-bag-shopping"></i> -->
+                    <i class="fas fa-bag-shopping"></i>
                     <i class="fa-sharp rounded-pill badge-notification">2</i>
 
                   </a>
@@ -157,7 +160,7 @@
                 </div>
 
                 <!-- Notification -->
-                <a class="text-reset mt-2 me-3" href="#">
+                <a class="text-reset mt-2 me-3" href="{{url('cart')}}">
                   <!-- <img src="{{url('bundles/images/svgs/carts 1.svg')}}" alt=""> -->
                   <span><i class="fas fa-shopping-cart"> </i></span>                              
                    @auth

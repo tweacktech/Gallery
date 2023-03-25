@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
+use DB;
 
 class CartController extends Controller
 {
@@ -18,10 +19,10 @@ class CartController extends Controller
 
     public function index()
     {
-        // $user = Auth::user();
-        // $carts = $user->carts->count();
-
-        return view('carts.index', compact('carts'));
+        $user = Auth::user();
+        $carts = Cart::where('user_id',$user->id)->get();
+        $count = DB::table('carts')->where('user_id',$user)->count();
+        return view('customer.cart', compact('carts','count'));
     }
 
     public function store(Request $request)

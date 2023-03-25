@@ -9,7 +9,7 @@
     <section class="adjust">
 
       <div class="row">
-        @foreach($products as $products)
+        @foreach($wishlists as $wishlists)
                         <div class="col-md-3">
                             <div class="product-container">
                                 <div>
@@ -22,8 +22,8 @@
                          <div class="col-md-3">
                                 <div class="my-3">
                                     <h3 style="color: black; font-size: 2.5em; white-space: nowrap;" class="fw-bolder">
-                                        {{$products->name}}</h3>
-                                    <h6 style="color:;" class="fw-bolder mt-1">NGN {{$products->price}}</h6>
+                                        {{$wishlists->name}}</h3>
+                                    <h6 style="color:;" class="fw-bolder mt-1">NGN {{$wishlists->price}}</h6>
                                 </div>
                                 
                                 <div style="font-size: 1rem; color: black;">
@@ -33,9 +33,9 @@
                                 </div>
                                 
                                 <div class="d-flex mb-3">
-                                    <div class="btn btn-primary">
-                                        <button>ADD TO CART</button>
-                                    </div>
+                                    
+                                        <button class="btn btn-danger">Remove</button>
+                                    
                                 </div>
                             </div>
               

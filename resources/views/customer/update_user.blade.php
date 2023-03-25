@@ -14,18 +14,18 @@
                             <ul class="dashboard-items">
                                 <li>
                                 <img src="bundles/images/svgs/Order.svg" alt=""> 
-                                <span class="ms-2">Orders</span>
+                                <a href="{{url('order')}}" class="ms-2">Orders</a>
                                 </li>
                                 <li><img src="bundles/images/lit-icons/wishlist.png" alt=""> 
-                                    <span class="ms-2">Wishlist</span></li>
+                                    <a href="{{url('wishlist')}}" class="ms-2">Wishlist</a></li>
                                 <li><img src="bundles/images/lit-icons/reviw.png" alt="">
                                     <span class="ms-2">Pending
                                         Review</span></li>
                                 <li><img src="bundles/images/lit-icons/recently-viewed.png" alt=""> <span class="ms-2">Recently Viewed</span></li>
-                                <li><img src="bundles/images/lit-icons/user-profile.png" alt=""> <span
-                                        class="ms-2">Profile</span></li>
-                                <li><img src="bundles/images/lit-icons/settings.png" alt=""> <span class="ms-2">Account Manager</span></li>
-                             <li class="pt-4">
+                                <li><img src="bundles/images/lit-icons/user-profile.png" alt="">
+                                 <a  href="{{url('profile')}}"  class="ms-2">Profile</a></li>
+                                <li><img src="bundles/images/lit-icons/settings.png" alt=""> <a href="{{url('Update')}}" class="ms-2">Account Manager</a></li>
+                            <li class="pt-4">
                               <a class="btn btn-primary" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

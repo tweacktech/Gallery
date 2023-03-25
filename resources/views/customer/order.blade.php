@@ -9,7 +9,7 @@
     <section class="adjust">
 
       <div class="row">
-        @foreach($products as $products)
+        @foreach($order as $order)
                         <div class="col-md-3">
                             <div class="product-container">
                                 <div>
@@ -22,8 +22,8 @@
                          <div class="col-md-3">
                                 <div class="my-3">
                                     <h3 style="color: black; font-size: 2.5em; white-space: nowrap;" class="fw-bolder">
-                                        {{$products->name}}</h3>
-                                    <h6 style="color:;" class="fw-bolder mt-1">NGN {{$products->price}}</h6>
+                                        {{$order->name}}</h3>
+                                    <h6 style="color:;" class="fw-bolder mt-1">NGN {{$order->price}}</h6>
                                 </div>
                                 
                                 <div style="font-size: 1rem; color: black;">
