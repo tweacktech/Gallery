@@ -20,24 +20,19 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $user = Auth::user();
-        $carts = $user->carts;
-        $total = 0;
-
-        foreach ($carts as $cart) {
-            $total += $cart->product->price * $cart->quantity;
-        }
+        $carts = Cart::where('user_id',$user->id)->get();
+        $total = $request->total;
 
         $order = new Order;
         $order->user_id = $user->id;
-        $order->total = $total;
+        $order->total_price = $total;
         $order->save();
 
         foreach ($carts as $cart) {
-            $order->products()->attach($cart->product_id, ['quantity' => $cart->quantity]);
             $cart->delete();
         }
-
-        return redirect()->route('orders.index');
+        Alert::success('Success','Order has been made succesfully')
+        return redirect()->Intended('orders');
     }
 
     public function show($id)
