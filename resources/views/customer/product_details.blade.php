@@ -18,15 +18,15 @@
                         <div class="col-md-6">
                             <div class="product-container">
                                 <div>
-                                    <img class="img-fluid" src="{{url('bundles/images/landing/card-cover-3.jpg')}}" alt="">
+                                    <img class="img-fluid" src="{{url('bundles/images/landing',$products->image)}}" alt="">
                                 </div>
                             </div>
                             <div class="d-flex">
-                                <div class="sub-product"><img src="{{url('bundles/images/landing/card-cover-3.jpg')}}" class="img-fluid" alt=""
+                                <div class="sub-product"><img src="{{url('bundles/images/landing/bg-image-3.png')}}" class="img-fluid" alt=""
                                         srcset=""></div>
-                                <div class="mx-2 sub-product"><img src="{{url('bundles/images/landing/card-cover-3.jpg')}}" class="img-fluid" alt=""
+                                <div class="mx-2 sub-product"><img src="{{url('bundles/images/landing/bg-image-3.png')}}" class="img-fluid" alt=""
                                         srcset=""></div>
-                                <div class="sub-product"><img src="{{url('bundles/images/landing/card-cover-3.jpg')}}" class="img-fluid" alt=""
+                                <div class="sub-product"><img src="{{url('bundles/images/landing/bg-image-3.png')}}" class="img-fluid" alt=""
                                         srcset=""></div>
                             </div>
                         </div>
@@ -48,7 +48,7 @@
                                 <div class="my-3">
                                     <h3 style="color: black; font-size: 2.5em; white-space: nowrap;" class="fw-bolder">
                                         {{$products->name}}</h3>
-                                    <h6 style="color: #00659D;" class="fw-bolder mt-3">NGN {{$products->price}}</h6>
+                                     <h6 style="color: #00659D;" class="fw-bolder mt-3">NGN {{$products->price}}</h6>
 
                                 </div>
                                 <div>
@@ -83,20 +83,29 @@
                                     </div>
                                 </div>
                                 <div class="d-flex mb-3">
-                                    <div class="d-flex me-4">
-                                        <div style="width: 150px; height: 52px; background-color: #EAECEF;"
+                                     <div class="d-flex me-4">
+                                        
+                        <form method="POST" action="{{url('wishlist')}}">
+                          @csrf
+                          <input type="text" hidden name="product_id" value="{{$products->id}}">
+                                                
+                        <button type="submit" style="width: 150px; height: 52px; background-color: #EAECEF;"
                                             class="d-flex justify-content-center align-items-center">
-                                            <span style="font-size: 1.3rem;" class=" fw-bolder">10</span>
-                                        </div>
-                                        <div class="d-flex flex-column">
-                                            <button style="padding-top: 0.2rem; padding-bottom: 0.2rem; background-color: #DBDFE3;"
-                                                class="d-block border-0">+</button>
-                                            <button style="padding-top: 0.2rem; padding-bottom: 0.2rem; background-color: #DBDFE3;"
-                                                class="d-block border-0">-</button>
-                                        </div>
-                                    </div>
+                            Add to wishlist
+                        </button>
+                        </form>
+                       
+                      </div>
+                                   
                                     <div class="cart-btn">
-                                        <button><b> ADD TO CART</b></button>
+                                         <form method="POST" action="{{url('cart')}}">
+                          @csrf
+                          <input type="text" hidden name="product_id" value="{{$products->id}}">
+                                                
+                        <button type="submit">
+                          Add to Cart
+                        </button>
+                        </form>
                                     </div>
                                 </div>
                                 <div style="font-size: small;"  class="mt-2">
@@ -105,7 +114,7 @@
                                         <h6 style="color: black;" class="fw-bolder me-3">SPECIFICATION</h6>
                                         <h6 style="color: black;" class="fw-bolder ">DELIVERY & RETURN</h6>
                                     </div>
-                                    <h5 class="my-3 fs-6"><b>AT A GLANCE</b></h5>
+                                   
                                     <p>{{$products->description}}
                                     </p>
                                     <h5 class="my-3 fs-6"><b>FEATURES AND BENEFITS</b></h5>

@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->foreignid('user_id')->reference('users')->on('id');
             $table->decimal('total_price',8,2)->default(0);
-            $table->string('status');
+            $table->BigInteger('status')->default(0);
             $table->timestamps();
         });
     }

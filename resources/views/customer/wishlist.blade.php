@@ -34,7 +34,7 @@
                                 
                                 <div class="d-flex mb-3">
                                     
-                                        <button class="btn btn-danger">Remove</button>
+                                        <a href="{{url('remove_wishlist',$wishlists->id)}}" class="btn btn-danger">Remove</a>
                                     
                                 </div>
                             </div>

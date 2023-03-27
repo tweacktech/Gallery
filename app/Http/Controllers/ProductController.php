@@ -48,20 +48,36 @@ class ProductController extends Controller
     public function show($id)
     {
         $user = Auth::user('id');
-        $products = Product::findOrFail($id);       
+        if ($user) {
+             $products = Product::findOrFail($id);       
         $count = DB::table('carts')->where('user_id',$user->id)->count();
       return view('customer.product_details', compact('count','products'));
+        }
+          $products = Product::findOrFail($id);       
+        $count = 0;
+         return view('customer.product_details', compact('count','products'));
+       
     }
 
     public function Search(Request $request)
     {
         $user = Auth::user('id');
+        if ($user) {
         $search=$request->input('search');
         $products = Product::query()
             ->where('name', 'LIKE', "%{$search}%")
             ->orWhere('description', 'LIKE', "%{$search}%")
             ->get();
         $count = DB::table('carts')->where('user_id',$user->id)->count();
+        return view('customer.search', compact('products','count'));
+        }
+
+        $search=$request->input('search');
+        $products = Product::query()
+            ->where('name', 'LIKE', "%{$search}%")
+            ->orWhere('description', 'LIKE', "%{$search}%")
+            ->get();
+        $count =0;
         return view('customer.search', compact('products','count'));
     }
 

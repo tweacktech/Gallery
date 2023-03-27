@@ -12,7 +12,7 @@ class OrderController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $order = Order::where('user_id',$user->id);
+        $order = Order::where('user_id',$user->id)->get();
         $count = DB::table('carts')->where('user_id',$user->id)->count();
         return view('customer.order', compact('order','count'));
     }
@@ -31,7 +31,7 @@ class OrderController extends Controller
         foreach ($carts as $cart) {
             $cart->delete();
         }
-        Alert::success('Success','Order has been made succesfully')
+        Alert::success('Success','Order has been made succesfully');
         return redirect()->Intended('orders');
     }
 

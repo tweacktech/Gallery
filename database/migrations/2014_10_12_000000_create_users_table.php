@@ -23,7 +23,8 @@ class CreateUsersTable extends Migration
             $table->string('provider_id')->nullable();
             $table->string('otp')->nullable();
             $table->BigInteger('status')->default(0);
-            $table->string('avatar')->nullable();
+            $table->string('image')->nullable();
+            $table->text('state')->nullable();
             $table->text('address')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

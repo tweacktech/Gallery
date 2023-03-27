@@ -141,13 +141,12 @@
                 <!-- Cart -->
                 <p style="font-size: 0.7rem;" class="me-2 pt-2 mb-0">Add item inside my bag</p>
                
-                  <a class="text-reset " href="{{url('wishlist')}}" id="navbarDropdownMenuLink"
+                  <a class="text-reset" href="{{url('wishlist')}}" id="navbarDropdownMenuLink"
                     >
                     <!-- <img src="/bundles/images/lit-icons/Icon.png" alt=""> -->
                     <img src="{{url('bundles/images/lit-icons/Icon.png')}}" style="margin-right: -1rem;" alt="">
 
-                    <i class="fas fa-bag-shopping"></i>
-                    <i class="fa-sharp rounded-pill badge-notification">2</i>
+                  
 
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
@@ -221,6 +220,7 @@
       </div>
     </nav>
   </header>
+@include('sweetalert::alert')
 
 
 @yield('content')

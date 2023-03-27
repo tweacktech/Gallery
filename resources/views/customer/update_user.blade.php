@@ -47,37 +47,52 @@
                             <h3 class="head-3" style="padding-left: 2.5rem;">Update Profile</h3>
                         </div>
                         <div class="col-8">
-                            <form class="row mx-4 update-form">
+                            <form class="row mx-4 update-form" action="{{url('update_profile')}}" method="POST">
+                                @csrf
                                 <div class="col-12 mb-3">
                                     <div class="form-outline">
-                                        <input type="text" name="updateFullname" id="updateFullname"
+                                        <input type="text" name="first_name" value="{{Auth::user()->first_name}}" id="first_name"
                                             class="form-control" />
-                                        <label class="form-label" for="updateFullname">Update Fullname</label>
+                                        <label class="form-label" for="first_name"> First name</label>
+                                    </div>
+                                </div>
+                                 <div class="col-12 mb-3">
+                                    <div class="form-outline">
+                                        <input type="text" name="last_name" id="last_name"
+                                            class="form-control" value="{{Auth::user()->last_name}}" />
+                                        <label class="form-label" for="last_name">Last name</label>
                                     </div>
                                 </div>
                                 <div class="col-12 mb-3">
                                     <div class="form-outline">
-                                        <input name="updateEmail" type="email" id="updateEmail" class="form-control" />
-                                        <label class="form-label" for="updateEmail">Update Email Address</label>
+                                        <input name="email" value="{{Auth::user()->email}}" disabled type="email" id="email" class="form-control" />
+                                        <label class="form-label" for="email">Update Email Address</label>
                                     </div>
                                 </div>
                                 <div class="col-12 mb-3">
                                     <div class="form-outline">
-                                        <input name="updateNumber" type="tel" id="updateNumber" class="form-control" />
+                                        <input name="country" value="{{Auth::user()->country}}" type="tel" id="country" class="form-control" />
+                                        <label class="form-label" for="country">Country</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 mb-3">
+                                    <div class="form-outline">
+                                        <input name="phone_number"value="{{Auth::user()->phone_number}}" type="tel" id="phone_number" class="form-control" />
                                         <label class="form-label" for="updateNumber">Update Phone No</label>
                                     </div>
                                 </div>
                                 <div class="col-12 mb-3">
                                     <div class="form-outline">
-                                        <input name="updateAddress" type="text" id="updateAddress"
+                                        <input name="address" type="text" id="address"value="{{Auth::user()->address}}"
                                             class="form-control" />
-                                        <label class="form-label" for="updateAddress">Update Address</label>
+                                        <label class="form-label" for="address">Update Address</label>
                                     </div>
                                 </div>
                                 <div class="col-12 mb-3">
                                     <div class="form-outline">
-                                        <input name="updateState" type="text" id="updateState" class="form-control" />
-                                        <label class="form-label" for="updateState">Update State</label>
+                                        <input name="state" value="{{Auth::user()->state}}"  type="text" id="state" class="form-control" />
+                                        <label class="form-label" for="state">Update State</label>
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-end">

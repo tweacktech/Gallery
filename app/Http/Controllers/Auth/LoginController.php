@@ -50,6 +50,7 @@ public function redirectToGoogle()
     return Socialite::driver('google')->redirect();
 }
 
+// redirect google
 
 public function handleGoogleCallback()
 {
@@ -67,11 +68,76 @@ public function handleGoogleCallback()
             'last_name' => $user->last_name,
             'country' => $user->country,
             'email' => $user->email,
+            'status' => 1,
             
         ]);
 
         // auth()->login($newUser, true);
         // Auth::login($newUser);
+        $newUser = Auth::user();
+      
+                return redirect()->intended('dashboard');
+    }
+
+    return redirect()->intended('/dashboard');
+}
+
+// facebook
+public function redirectToFacebook()
+{
+    return Socialite::driver('facebook')->redirect();
+}
+// callbackfacebook
+
+public function handleFacebookleCallback()
+{
+    $user = Socialite::driver('facebook')->stateless()->user();
+    $existingUser = User::where('email', $user->email)->first();
+
+    if ($existingUser) {
+        $existingUser = Auth::user();
+        return redirect()->intended('/dashboard');
+    } else {
+        $newUser = User::create([
+            'first_name' => $user->userfirst_name,
+            'last_name' => $user->last_name,
+            'country' => $user->country,
+            'email' => $user->email,
+            'status' => 1,
+        ]);
+
+        $newUser = Auth::user();
+      
+                return redirect()->intended('dashboard');
+    }
+
+    return redirect()->intended('/dashboard');
+}
+
+
+public function redirectToLinkin()
+{
+    return Socialite::driver('linkin')->redirect();
+}
+
+public function handleToLinkinleCallback()
+{
+    $user = Socialite::driver('linkin')->stateless()->user();
+    
+    $existingUser = User::where('email', $user->email)->first();
+
+    if ($existingUser) {
+        $existingUser = Auth::user();
+        return redirect()->intended('/dashboard');
+    } else {
+        $newUser = User::create([
+            'first_name' => $user->userfirst_name,
+            'last_name' => $user->last_name,
+            'country' => $user->country,
+            'email' => $user->email,
+            'status' => 1,
+        ]);
+
         $newUser = Auth::user();
       
                 return redirect()->intended('dashboard');

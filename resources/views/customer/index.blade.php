@@ -147,7 +147,7 @@
                   </div>
                 </div>
                 <div class="text">
-                  <p>{{$products->description}}.</p>
+                  <p>{!!  substr(($products->description),0,99) !!}....</p>
                 </div>
                 <div>
                   <p class="amount"><b>₦ {{$products->price}}</b></p>

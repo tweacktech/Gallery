@@ -3,6 +3,7 @@ body {
   font-family: Montserrat, sans-serif !important;
   font-size: 14px;
   line-height: 20px;
+  padding: 6px;
 }
 .alert {
   padding: 0.8rem 0px;

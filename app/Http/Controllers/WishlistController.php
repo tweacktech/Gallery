@@ -7,6 +7,7 @@ use App\Models\Wishlist;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use DB;
+use Alert;
 
 class WishlistController extends Controller
 {
@@ -18,8 +19,8 @@ class WishlistController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $wishlists = Wishlist::where('user_id',$user->id)->get();
-         $count = DB::table('carts')->where('user_id',$user)->count();
+        $wishlists = DB::table('wishlists')->where('user_id',$user->id)->join('products','products.id','wishlists.product_id')->select('products.name','products.price','wishlists.id')->get();
+         $count = DB::table('carts')->where('user_id',$user->id)->count();
 
         return view('customer.wishlist', compact('wishlists','count'));
     }
@@ -37,6 +38,7 @@ class WishlistController extends Controller
             $wishlist->product_id = $product_id;
             $wishlist->save();
         }
+         Alert::success('Success', 'Item added successful.');
 
         return redirect()->back()->with('success','Item added to wishlist');
         // return redirect()->route('wishlists.index');
@@ -44,9 +46,16 @@ class WishlistController extends Controller
 
     public function destroy($id)
     {
-        $wishlist = Wishlist::findOrFail($id);
-        $wishlist->delete();
+        $wishlist = Wishlist::find($id);
+         if ($wishlist) {
+             $wishlist->delete();
+             Alert::warning('warning', 'Item removed ');
+        return redirect()->back()->with('success','Item removed');
+        }
+       
+Alert::warning('warning', 'Item does not exist ');
+        return redirect()->back()->with('success','Item does not exist');
+        
 
-        return redirect()->route('wishlists.index');
     }
 }

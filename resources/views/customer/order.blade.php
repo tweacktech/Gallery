@@ -6,51 +6,67 @@
   <main>
     
     
-    <section class="adjust">
-
-      <div class="row">
-        @foreach($order as $order)
-                        <div class="col-md-3">
-                            <div class="product-container">
-                                <div>
-                                    <img class="img-fluid" src="{{url('bundles/images/landing/card-cover-3.jpg')}}" alt="">
-
-                                </div>
-                            </div>
-                          
-                        </div>
-                         <div class="col-md-3">
-                                <div class="my-3">
-                                    <h3 style="color: black; font-size: 2.5em; white-space: nowrap;" class="fw-bolder">
-                                        {{$order->name}}</h3>
-                                    <h6 style="color:;" class="fw-bolder mt-1">NGN {{$order->price}}</h6>
-                                </div>
-                                
-                                <div style="font-size: 1rem; color: black;">
-                                    <h6><b>Product ID</b>: 1004</h6>
-                                    <h6><b>Catergory</b>: Rings</h6>
-                                    <h6><b>Available</b>: Instock</h6>
-                                </div>
-                                
-                                <div class="d-flex mb-3">
-                                    <div class="btn btn-primary">
-                                        <button>ADD TO CART</button>
-                                    </div>
-                                </div>
-                            </div>
-              
-        @endforeach
+      <div class="p-2">
         
-      </div>
+         
+        </div>
 
-      <br>
-      <section>
-           
-        </section>
+      <div class="container">
+    <div class="row justify-content-center">
 
+       
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <center><h3>Order History</h3></center>
+                 </div>
+
+                <div class="card-body">   
+                    <div class="row">
+
+                        <div class="table-responsive">          
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>TITLE</th>
+        <th>STATUS</th>
+        <th>ACTIONS</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+        @foreach($order as $da)
+      <tr>       
+        <td>#</td>
+        <td>{{$da->total_price}}</td>
+        <td>{{$da->status}}</td>
+        <td >{{$da->created_at}} </td>
+  @endforeach
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+</div>
+
+
+
+                </div>
+
+                <div class="card-header">
+
+                </div>
+                <div class="card-header">
+                    <b >Remove </b>
+                 </div>
+            </div>
+        </div>
      
-    </section>
-
+    <div class="col-md-6"></div>
+    </div>
+</div>  
+<br>
 
   </main>
 
