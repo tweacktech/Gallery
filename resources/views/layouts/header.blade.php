@@ -116,7 +116,7 @@
                    <div style=" height:3rem" class="input-group mb-3">
                   <input placeholder="Search" type="text" class="form-control h-100"
                     aria-label="Text input with dropdown button" name="search" required>
-                  <button style="font-size: 14px; text-transform: inherit;"
+                 <!--  <button style="font-size: 14px; text-transform: inherit;"
                     class="btn btn-outline-secondary text-dark dropdown-toggle" type="button" data-bs-toggle="dropdown"
                     aria-expanded="false"><b>Category</b></button>
                   <ul class="dropdown-menu dropdown-menu-end">
@@ -127,7 +127,7 @@
                       <hr class="dropdown-divider">
                     </li>
                     <li><a class="dropdown-item" href="#">Separated link</a></li>
-                  </ul>
+                  </ul> -->
                   <button type="submit" style="border-radius: 0px; background-color: #23A6F0; height: 100%; padding: 0.5rem 1rem"
                     class="input-group-text pb-2 border-0 d-lg-flex"><i class="fas fa-search text-white"></i></button type="submit">
                 </div>
@@ -139,13 +139,14 @@
 
 
                 <!-- Cart -->
-                <p style="font-size: 0.7rem;" class="me-2 pt-2 mb-0">Add item inside my bag</p>
+                <!-- <p style="font-size: 0.7rem;" class="me-2 pt-2 mb-0">Add item inside my bag</p> -->
                
                   <a class="text-reset" href="{{url('wishlist')}}" id="navbarDropdownMenuLink"
                     >
                     <!-- <img src="/bundles/images/lit-icons/Icon.png" alt=""> -->
-                    <img src="{{url('bundles/images/lit-icons/Icon.png')}}" style="margin-right: -1rem;" alt="">
-
+                    <!-- <img src="{{url('bundles/images/lit-icons/Icon.png')}}"  alt=""> -->
+                    <span class="badge rounded-pill badge-notification bg-danger"></span>
+<img src="bundles/images/lit-icons/Vector.png" style="margin-right: -0.4rem; font-size: 20px;" alt="">
                   
 
                   </a>
@@ -189,31 +190,31 @@
         <div class="collapse navbar-links navbar-collapse" id="navbarExample01">
           <ul class="navbar-nav mx-auto mb-3 mt-1">
             <li class="nav-item active">
-              <a class="nav-link" href="{{url('Stores')}}">NEW IN</a>
+              <a class="nav-link" href="{{url('bath')}}">NEW IN</a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="#!">BATHING & CHANGING</a>
+              <a class="nav-link" href="{{URL('bath')}}">BATHING & CHANGING</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#!">BABY SAFETY</a>
+              <a class="nav-link" href="{{URL('bath')}}">BABY SAFETY</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#!">FEEDING & WEANING</a>
+              <a class="nav-link" href="{{URL('bath')}}">FEEDING & WEANING</a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="#!">TOYS & GIFT</a>
+              <a class="nav-link" href="{{URL('bath')}}">TOYS & GIFT</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#!">BABY CARE</a>
+              <a class="nav-link" href="{{URL('bath')}}">BABY CARE</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#!">OFFER SETS & BUNDLES</a>
+              <a class="nav-link" href="{{URL('bath')}}">OFFER SETS & BUNDLES</a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="#!">PARENTS ROOM</a>
+              <a class="nav-link" href="{{URL('bath')}}">PARENTS ROOM</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#!">BLOG</a>
+              <a class="nav-link" href="{{URL('bath')}}">BLOG</a>
             </li>
           </ul>
         </div>
@@ -383,6 +384,7 @@
 
   <!-- MDB -->
   <script type="text/javascript" src="{{url('js/mdb.min.js')}}"></script>
+  <script type="text/javascript" src="{{url('countryList.js')}}"></script>
   <!-- Custom scripts -->
   <script type="text/javascript"></script>
 

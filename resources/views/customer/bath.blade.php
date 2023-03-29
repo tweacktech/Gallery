@@ -65,9 +65,9 @@
                                         <form>
                                             @foreach($category as $category)
                                             <div class="mb-3 form-check">
-                                                <input type="radio" name="bedroomBrand" class="form-check-input"
-                                                    id="bedroomBrand">
-                                                <label class="form-check-label ms-3" for="bedroomBrand">{{$category->name}} <span class="ms-4"></span></label>
+                                                <input type="radio" name="Category" class="form-check-input"
+                                                    id="Category">
+                                                <label class="form-check-label ms-3" for="Category">{{$category->name}} <span class="ms-4"></span></label>
                                             </div>
                                             @endforeach
                                             <button type="submit" class="btn btn-primary">Submit</button>
@@ -103,20 +103,17 @@
                                         </div>
                                     </div>
                                     <div class="py-3 border-bottom">
-                                        <p class="dark-black">Age</p>
+                                        
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="sixMonths"
-                                                id="sixMonths">
-                                            <label class="form-check-label ms-3" for="sixMonths">
-                                                6+Months
-                                            </label>
+                                            <p class="dark-black">AgeGroup</p>
+                                        <select class="form-select" id="ageGroup" aria-label="Default select example">
+                                            <option selected></option>
+                                            <option value="1">6+Months</option>
+                                            <option value="2">18+Months</option>
+                                        </select>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="eighteenMonths"
-                                                id="eighteenMonths">
-                                            <label class="form-check-label ms-3" for="eighteenMonths">
-                                                18+Months
-                                            </label>
+                                           
                                         </div>
                                     </div>
                                     
@@ -146,7 +143,7 @@
                                 <div class="img-border">
                                     <div class="hovereffect">
                                         <div class="slider-image">
-                                             <img src="{{url('/products',$product->image)}}"
+                                            <img src="{{url('/products',$product->image)}}"
                                                 class="d-block w-100" alt="...">
                                         </div>
                                         
@@ -161,9 +158,20 @@
                                             <div class="div">
                                                 <div class="d-flex card-icons">
                                                     <div>
-                                                        <a href="">
+                                                       <!--  <a href="">
                                                             <img src="bundles/images/lit-icons/Vector.png" alt="">
-                                                        </a>
+                                                        </a> -->
+
+
+                                                      <form method="POST" action="{{url('wishlist')}}">
+                                              @csrf
+                                              <input type="text" hidden name="product_id" value="{{$product->id}}">
+                                                
+                                                
+                                                 <button type="submit">
+                                                             <img src="bundles/images/lit-icons/Vector.png" alt="">
+                                                        </button>
+                                                    </form> 
                                                     </div>
                                                     <div>
                                                         <a href="">
@@ -218,7 +226,7 @@
 
                             @endforeach
     
-                       
+                        {{$products->links()}}
                            
                             
                         </div>

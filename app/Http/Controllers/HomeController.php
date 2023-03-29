@@ -28,16 +28,16 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user('id');
-       $count = DB::table('carts')->where('user_id',$user->id)->count();
-
-        return view('customer.dashboard',compact('user','count'));
+       $count = DB::table('carts')->where('user_id',$user->id)->where( 'status',0)->count();
+        $wallet=DB::table('wallets')->where('user_id',$user->id)->sum('ballance');
+           return view('customer.dashboard',compact('user','count','wallet'));
     }
 
 
      public function update()
     {
         $user = Auth::user('id');
-       $count = DB::table('carts')->where('user_id',$user->id)->count();
+       $count = DB::table('carts')->where('user_id',$user->id)->where( 'status',0)->count();
 
         return view('customer.update_user',compact('user','count'));
     }
@@ -46,8 +46,8 @@ class HomeController extends Controller
     {
         $user = Auth::user('id');
        $count = DB::table('carts')->where('user_id',$user->id)->count();
-
-        return view('customer.profile',compact('user','count'));
+         $wallet=DB::table('wallets')->where('user_id',$user->id)->sum('ballance');
+        return view('customer.profile',compact('user','count','wallet'));
     }
 
 

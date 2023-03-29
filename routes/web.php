@@ -7,8 +7,10 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\PaymentController;
 use App\Models\Product;
 use App\Models\Category;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +27,7 @@ Route::get('/', function () {
       $user = Auth::user('id');
       if ($user) {
         $category = Category::all();
-        $count = DB::table('carts')->where('user_id',$user->id)->count();
+        $count = DB::table('carts')->where('user_id',$user->id)->where( 'status',0)->count();
        $products = DB::table('products')->SimplePaginate(10);
     return view('customer.index',compact('count','products','category'));
           }
@@ -37,14 +39,22 @@ Route::get('/', function () {
 });
 
 
+Route::post('/try',[App\Http\Controllers\Auth\RegisterController::class, 'try'] )->name('try');
+
 
 Route::post('/Search',[App\Http\Controllers\ProductController::class, 'Search'] )->name('Search');
 Route::get('/Stores',[App\Http\Controllers\ProductController::class, 'index'] )->name('Stores');
+Route::post('/filter',[App\Http\Controllers\ProductController::class, 'filter'] )->name('Stores');
+
+Route::get('/bath',[App\Http\Controllers\ProductController::class, 'bath'] )->name('Stores');
 
 Route::get('/details/{id}',[App\Http\Controllers\ProductController::class, 'show'] )->name('Details');
 
 Auth::routes();
 Route::get('/cart',[App\Http\Controllers\CartController::class, 'index'] );
+Route::get('/add_quantity_cart/{id}',[App\Http\Controllers\CartController::class, 'existing_add_cat'])->name('Remove');
+Route::get('/sub_quantity_cart/{id}',[App\Http\Controllers\CartController::class, 'existing_sub_cat'])->name('Remove');
+
 Route::get('/remove_cart/{id}',[App\Http\Controllers\CartController::class, 'destroy'])->name('Remove');
 Route::get('/wishlist',[App\Http\Controllers\WishlistController::class,'index']);
 Route::get('/remove_wishlist/{id}',[App\Http\Controllers\WishlistController::class,'destroy'])->name('Remove');
@@ -72,6 +82,6 @@ Route::get('/linkin/redirect', [App\Http\Controllers\Auth\LoginController::class
 Route::get('/auth/linkin/callback', [App\Http\Controllers\Auth\LoginController::class, 'handleToLinkinleCallback']);
 
 
-Route::get('/payment/pay', [PaymentController::class, 'pay'])->name('payment.pay');
-Route::get('/payment/verify', [PaymentController::class, 'verify'])->name('payment.verify');
+Route::get('payment', [PaymentController::class, 'payment'])->name('payment.pay');
+Route::get('verify-payment/{reference}', [PaymentController::class, 'PaymensV'])->name('payment.verify');
 Route::get('/payment/success', [PaymentController::class,'success'])->name('payment.success');

@@ -19,10 +19,27 @@ class ProductController extends Controller
         $category = Category::all();
             return view('customer.products', compact('products','category'));
          }
-        $count = DB::table('carts')->where('user_id',$user->id)->count();
+        $count = DB::table('carts')->where('user_id',$user->id)->where( 'status',0)->count();
         $products = DB::table('products')->SimplePaginate(10);
         $category = Category::all();
         return view('customer.products', compact('products','category','count'));
+    }
+
+
+
+ public function bath()
+    {
+         $user = Auth::user('id');
+         if (!$user) {
+             // code...
+            $products = DB::table('products')->SimplePaginate(10);
+        $category = Category::all();
+            return view('customer.bath', compact('products','category'));
+         }
+        $count = DB::table('carts')->where('user_id',$user->id)->where( 'status',0)->count();
+        $products = DB::table('products')->SimplePaginate(10);
+        $category = Category::all();
+        return view('customer.bath', compact('products','category','count'));
     }
 
     public function create()
@@ -37,7 +54,9 @@ class ProductController extends Controller
         $product = new Product;
         $product->name = $request->input('name');
         $product->description = $request->input('description');
+        $product->features = $request->input('features');
         $product->price = $request->input('price');
+        $product->age_group = $request->input('age_group');
         $product->category_id = $request->input('category_id');
         $product->save();
 
@@ -50,7 +69,7 @@ class ProductController extends Controller
         $user = Auth::user('id');
         if ($user) {
              $products = Product::findOrFail($id);       
-        $count = DB::table('carts')->where('user_id',$user->id)->count();
+        $count = DB::table('carts')->where('user_id',$user->id)->where( 'status',0)->count();
       return view('customer.product_details', compact('count','products'));
         }
           $products = Product::findOrFail($id);       
@@ -68,8 +87,9 @@ class ProductController extends Controller
             ->where('name', 'LIKE', "%{$search}%")
             ->orWhere('description', 'LIKE', "%{$search}%")
             ->get();
-        $count = DB::table('carts')->where('user_id',$user->id)->count();
-        return view('customer.search', compact('products','count'));
+            $category = Category::all();
+        $count = DB::table('carts')->where('user_id',$user->id)->where( 'status',0)->count();
+        return view('customer.search', compact('products','count','category'));
         }
 
         $search=$request->input('search');
@@ -78,7 +98,8 @@ class ProductController extends Controller
             ->orWhere('description', 'LIKE', "%{$search}%")
             ->get();
         $count =0;
-        return view('customer.search', compact('products','count'));
+        $category = Category::all();
+        return view('customer.search', compact('products','count','category'));
     }
 
     public function edit($id)
@@ -107,5 +128,29 @@ class ProductController extends Controller
         $product->delete();
 
         return redirect()->route('products.index');
+    }
+
+
+
+
+     public function filter(Request $request)
+    {
+        $products = Product::query();
+
+        if ($request->has('age')) {
+            $products->where('age_group', $request->age);
+        }
+
+        if ($request->has('category')) {
+            $products->where('category', $request->category);
+        }
+
+        if ($request->has('color')) {
+            $products->where('color', $request->color);
+        }
+
+        $products = $products->get();
+
+        return view('products.index', compact('products'));
     }
 }

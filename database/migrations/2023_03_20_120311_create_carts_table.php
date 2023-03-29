@@ -18,6 +18,8 @@ class CreateCartsTable extends Migration
             $table->foreignid('user_id')->reference('users')->on('id');
             $table->foreignid('product_id')->reference('products')->on('id');
              $table->BigInteger('quantity');
+             $table->string('age_group')->nullable();
+             $table->BigInteger('status')->default(0);
             $table->timestamps();
         });
     }

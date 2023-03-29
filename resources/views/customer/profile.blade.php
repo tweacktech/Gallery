@@ -58,7 +58,7 @@
                         </div>
                         <div class="col-6">
                             <h5 class="mb-0 contact-header">GALLERY BEBE</h5>
-                            <div class="container-fluid contact-area"><p><b>₦ 75.000.00</b></p>
+                            <div class="container-fluid contact-area"><p><b>NGN{{$wallet}}</b></p>
                             </div>
                         </div>
                         <div class="col-6">

@@ -53,11 +53,20 @@
                                     <label class="form-label" for="email">Email</label>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row">                           
+                                <div class="col-12 mb-3">
+                                <select  name="country" class="form-select selecter form-select mb-3"type="" name="country" id="country"> <option>Select Country</option> </select>
+                                </div>
+        
+                            <div class="col-12 mb-3"> 
+                         <select name="country" class="form-select selecter form-select mb-3" type="" name="state" id="state">
+                              <option value="">Select state</option> 
+                         </select>
+                           </div>
+                                <div class="row">
                             <div class="col-3 mb-3">
                                 <div class="form-outline">
-                                    <input type="text" id="formControlSm" class="form-control" />
-                                    <label class="form-label" readonly for="formControlSm">(+234)</label>
+                                    <input type="text" name="code" class="form-control" id="code" />
                                 </div>
                             </div>
                             <div class="col-9 mb-3">
@@ -73,14 +82,9 @@
                                 </div>
                             </div>
                         </div>
-                            <div class="col-12 mb-3">
-                                <select name="country" class="form-select selecter form-select mb-3"
-                                    aria-label=".form-select-lg example">
-                                    <option>Select Country</option>
-                                    <option value="Nigeria">Nigeria</option>
-                                    <option value="Ghana">Ghana</option>
-                                    <option value="Cameroon">Cameroon</option>
-                                </select>
+
+
+
                             </div>
                             <div class="col-12 mb-3">
                                 <div class="form-outline">
@@ -114,4 +118,4 @@
     </main>
 
 @endsection('content')
- 
+<script type="module" src="{{url('/js/signup.js')}}"></script>

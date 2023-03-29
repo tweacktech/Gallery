@@ -55,14 +55,18 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+
         return Validator::make($data, [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'country' => ['required', 'string', 'max:255'],
+            // 'state' => ['required', 'string', 'max:255'],
+            'code' => ['required',  'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'phone_number' => ['required'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
+
     }
 
     /**
@@ -80,20 +84,26 @@ class RegisterController extends Controller
             'last_name' => $data['last_name'],
             'country' => $data['country'],
             'email' => $data['email'],
-            'phone_number' => $data['phone_number'],
+            'phone_number' => $data['code']+$data['phone_number'],
             'otp' => $otp,
             'password' => Hash::make($data['password']),
         ]);
 
+
+return $data;
+
          // $data->notify(new OtpNotification($data->otp));
 
-        Notification::send($data, new OtpNotification($data->otp));
-
-
-    
-
+        // Notification::send($data, new OtpNotification($data->otp));
     }
 
+
+
+
+public function try(Request $request){
+
+    return $request->input('state');
+}
 
 
 public function redirectToGoogle()

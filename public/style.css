@@ -1,9 +1,7 @@
 body {
-  /* font-family: Arial, Helvetica, sans-serif; */
-  font-family: Montserrat, sans-serif !important;
+  font-family: "Montserrat", sans-serif;
   font-size: 14px;
   line-height: 20px;
-  padding: 6px;
 }
 .alert {
   padding: 0.8rem 0px;
@@ -59,10 +57,10 @@ customize-font {
 }
 
 ul .nav-link {
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: 800;
-  font-size: 0.78rem;
-  line-height: 1rem;
+  /* font-family: Arial, Helvetica, sans-serif; */
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 
 .center-img {
@@ -79,6 +77,12 @@ ul .nav-link {
   left: 2rem;
   /* /* background-color: black; */
   color: white;
+}
+
+.to-front h2 {
+  font-weight: 700;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
 }
 .overwrite {
   position: relative;
@@ -234,10 +238,10 @@ ul .nav-link {
 }
 
 .sign-h4 {
-  font-family: Arial, Helvetica;
+  /* font-family: Arial, Helvetica; */
   font-size: 0.875rem;
   line-height: 1.25rem;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 #tns2-ow {
@@ -270,7 +274,8 @@ ul .nav-link {
 }
 
 .dept-head-6 {
-  color: #333333;
+  color: rgb(37, 43, 66);
+  /* color: #333333; */
   font-size: 0.875rem;
   font-weight: 600;
   line-height: 1.25rem;
@@ -281,7 +286,8 @@ ul .nav-link {
   border-radius: 90px;
   color: white;
   font-size: 10px;
-  /* margin-right: 1rem; */
+  display: flex;
+  padding: 3px 5px;
 }
 
 .star {
@@ -332,7 +338,7 @@ ul .nav-link {
 }
 
 .bold-type {
-  font-family: Arial, Helvetica, sans-serif;
+  /* font-family: Arial, Helvetica, sans-serif; */
   font-weight: 700 !important;
   font-size: 1.5rem !important;
   line-height: 2rem !important;
@@ -474,19 +480,161 @@ ul .nav-link {
   background-color: #e0d597;
 }
 
+/* BATHING STOCK PAGE */
+
+.dark-black {
+  color: #000000;
+  font-weight: bolder;
+}
+
+.product-btn {
+  border: 1px solid #cccecf;
+  border-right: 0;
+  background-color: white;
+}
+
+.product-btn + input {
+  border-left: 0;
+}
+
+.pure-white {
+  color: white;
+  font-weight: bolder;
+}
+
+.stock-h3 + button {
+  background-color: #ebf5fa;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  border-radius: 25px;
+  border: none;
+}
+
+.color-picker {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+}
+
+.blue {
+  background-color: #23a6f0;
+}
+.green {
+  background-color: #23856d;
+}
+.red {
+  background-color: #e74040;
+}
+.dark-blue {
+  background-color: #252b42;
+}
+
+.tags {
+  border: 1px solid #23a6f0;
+  color: #23a6f0;
+  padding: 1rem;
+  margin-left: 0.5rem;
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.range-btn {
+  width: 45%;
+  background: #f9f9f9;
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  padding: 1rem 0;
+}
+
+.filter-btn {
+  background-color: #23a6f0;
+  color: white;
+}
+
+.filter-btn:hover {
+  background-color: #00659d;
+  color: white;
+}
+
+.img-border {
+  border: 1px solid #00659d;
+  margin-bottom: 1.5rem;
+}
+
+/* BLOG PAGE STYLING */
+
+.blog-post a {
+  font-weight: bold;
+  font-size: 1.8rem;
+  color: #000000;
+  line-height: 2rem;
+}
+
+.blog-post:hover {
+  text-decoration: underline;
+}
+
+.blog-post + p {
+  font-size: 1.2em;
+}
+
+/* BLOG DETAILS PAGE STYLING */
+
+.post {
+  color: #000000;
+  font-size: 1.8rem;
+  line-height: 2.2rem;
+  padding: 0 2.5rem;
+  margin-bottom: 6rem;
+}
+
+.head-post {
+  font-weight: bold;
+  /* font-size: 1.4em; */
+  font-weight: bold;
+  color: #000000;
+}
+
+.author-content h6 {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+.author-content h2 {
+  font-size: 2.1rem;
+  font-weight: 600;
+}
+
+.more-post {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: black;
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
 footer {
   background-color: #ebf5fa;
+  font-size: 14px;  
+  line-height: 20px;
+  color: #000000;
+  font-weight: 400; 
+}
+
+.text-reset {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 
 /* #search-input{
   border: 0 !important;
 } */
 
-.fw-bold {
+/* .fw-bold {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 700 !important;
   color: black !important;
-}
+} */
 
 .fw-bold + span {
   font-size: 0.8rem;

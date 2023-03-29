@@ -93,7 +93,7 @@
             
             <div class="pt-4">
               <div class="hovereffect">
-                <div class=""><img src="bundles/images/landing/product-cover-4.png" class="d-block w-100"
+                <div class=""><img src="{{url('/products',$products->image)}}" class="d-block w-100"
                     alt="...">
                 </div>
                 <!-- <img class="img-responsive" src="bundles/images/landing/card-cover-5.jpg" alt=""> -->
@@ -138,7 +138,7 @@
               <div class="p-3">
                 <div class="d-flex justify-content-between">
                   <div>
-                    <h6 class="dept-head-6">{{$products->name}}</h6>
+                    <h6 class="dept-head-6"><a href="{{url('details',$products->id)}}"> {{$products->name}}</a></h6>
                   </div>
                   <div>
                     <button class="btn btn-sm rating-btn">
@@ -147,7 +147,7 @@
                   </div>
                 </div>
                 <div class="text">
-                  <p>{!!  substr(($products->description),0,99) !!}....</p>
+                  <p>{!!  substr(($products->description),0,20) !!}....</p>
                 </div>
                 <div>
                   <p class="amount"><b>₦ {{$products->price}}</b></p>
@@ -171,6 +171,7 @@
               <div>
                 <div class="icon-bg-1 icon-body"><img class="d-block w-100"
                     src="{{url('bundles/images/lit-icons/pacifier 1.png')}}" alt="">
+                    {{$Category->name}}
                 </div>
               </div>
               @endforeach

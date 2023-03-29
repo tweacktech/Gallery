@@ -39,8 +39,8 @@
         @foreach($order as $da)
       <tr>       
         <td>#</td>
-        <td>{{$da->total_price}}</td>
-        <td>{{$da->status}}</td>
+        <td>NGN{{$da->total_price}}</td>
+        <td> @php  if($da->status==0){echo 'Pendin';}else{ echo 'Paid';}     @endphp</td>
         <td >{{$da->created_at}} </td>
   @endforeach
       </tr>

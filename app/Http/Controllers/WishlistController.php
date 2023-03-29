@@ -20,7 +20,7 @@ class WishlistController extends Controller
     {
         $user = Auth::user();
         $wishlists = DB::table('wishlists')->where('user_id',$user->id)->join('products','products.id','wishlists.product_id')->select('products.name','products.price','wishlists.id')->get();
-         $count = DB::table('carts')->where('user_id',$user->id)->count();
+         $count = DB::table('carts')->where('user_id',$user->id)->where( 'status',0)->count();
 
         return view('customer.wishlist', compact('wishlists','count'));
     }

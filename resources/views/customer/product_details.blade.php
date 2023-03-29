@@ -18,15 +18,15 @@
                         <div class="col-md-6">
                             <div class="product-container">
                                 <div>
-                                    <img class="img-fluid" src="{{url('bundles/images/landing',$products->image)}}" alt="">
+                                    <img class="img-fluid" src="{{url('/products',$products->image)}}" alt="">
                                 </div>
                             </div>
                             <div class="d-flex">
-                                <div class="sub-product"><img src="{{url('bundles/images/landing/bg-image-3.png')}}" class="img-fluid" alt=""
+                                <div class="sub-product"><img src="{{url('/products',$products->image)}}" class="img-fluid" alt=""
                                         srcset=""></div>
-                                <div class="mx-2 sub-product"><img src="{{url('bundles/images/landing/bg-image-3.png')}}" class="img-fluid" alt=""
+                                <div class="mx-2 sub-product"><img src="{{url('/products',$products->image)}}" class="img-fluid" alt=""
                                         srcset=""></div>
-                                <div class="sub-product"><img src="{{url('bundles/images/landing/bg-image-3.png')}}" class="img-fluid" alt=""
+                                <div class="sub-product"><img src="{{url('/products',$products->image)}}" class="img-fluid" alt=""
                                         srcset=""></div>
                             </div>
                         </div>
@@ -68,20 +68,20 @@
                                         <label for="ageGroup"><b>Age Group</b></label>
                                         <select class="form-select" id="ageGroup" aria-label="Default select example">
                                             <option selected></option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
+                                            <option value="1">6+Months</option>
+                                            <option value="2">18+Months</option>
                                         </select>
                                     </div>
                                     <div class="ms-5">
                                         <p><b>Color</b>: silver</p>
                                         <div class="colors">
-                                            <div class="yellow me-1"></div>
-                                            <div class="pinkish me-1"></div>
-                                            <div class="brownish"></div>
+                                          <a href="">  <div class="yellow me-1"></div></a>
+                                          <a href="">  <div class="pinkish me-1 me-1"></div></a>
+                                          <a href="">  <div class="brownish me-1"></div></a>
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="d-flex mb-3">
                                      <div class="d-flex me-4">
                                         
