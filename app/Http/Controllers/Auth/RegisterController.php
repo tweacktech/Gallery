@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 use App\Notifications\OtpNotification;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
 
 class RegisterController extends Controller
@@ -94,7 +95,7 @@ class RegisterController extends Controller
 if ($data) {
     $data->notify(new OtpNotification($data->otp));
     Alert('success', 'Account successfully created, check you email to complete registration');
- return $data;
+ return redirect()->back();
 }        
     }
 
@@ -136,10 +137,20 @@ public function handleGoogleCallback()
     return redirect()->intended('/');
 }
 
-public function verify()
+public function otp_verify(Request $request)
 {
+    $user=Auth::user();
+    return$otp=$request->input('otp');
+    $data=DB::table('users')->where('id',$user->id)->where('otp',$otp)->get();
+    if ($data) {
+         $user = DB::table('users')->where('otp',$otp)->update(['status'=>1]);
+    Alert('success', 'Account successfully activated');
+    return redirect()->Intended('dashboard');
+    }else{
+        Alert('warning', 'Invalide OTP');
 
-    return view('customer.otp');
+        return view('customer.otp');
+    }
 
 }
 

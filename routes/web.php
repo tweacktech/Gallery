@@ -37,7 +37,6 @@ Route::get('/', function () {
     return view('customer.index',compact('products','category'));
 });
 
-
 // wallet_view
 Route::get('/add_wallet',[App\Http\Controllers\WalletController::class, 'add_wallet'] )->name('Wallet');
 
@@ -76,7 +75,7 @@ Route::get('/payment_history', [App\Http\Controllers\OrderController::class, 'pa
 Route::post('/checkout', [App\Http\Controllers\OrderController::class, 'store'])->name('Checkout')->middleware('auth');
 
 Route::get('/otp/{otp}',[App\Http\Controllers\Auth\RegisterController::class, 'otp'] )->name('OTP');
-Route::get('/verify',[App\Http\Controllers\Auth\RegisterController::class, 'verify'] );
+Route::post('/otp_verify',[App\Http\Controllers\Auth\RegisterController::class, 'otp_verify'] );
 // google
 Route::get('login/google', [App\Http\Controllers\Auth\RegisterController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('auth/google/callback', [App\Http\Controllers\Auth\RegisterController::class, 'handleGoogleCallback']);

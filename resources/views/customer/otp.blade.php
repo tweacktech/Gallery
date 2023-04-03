@@ -1,69 +1,52 @@
 @extends('layouts.header')
 
 @section('content')
-    <!-- Jumbotron -->
-    <!-- Jumbotron -->
+ 
 
-  <main>
-    <div class=" container-fluid mb-5 mx-0 main-body">
-      <div class="row">
-        <div class="col-md-7 ms-n5">
-          <!-- <div class="container"> -->
-          <img src="bundles/images/landing/blog-pics2.png" class="h-0 w-100" alt="">
-        </div>
-        <!-- </div> -->
-        <div class="container px-5 col-md-5">
-          <div>
-            <h5 class="text-center text-dark mb-3 customize-font mt-5"><b>OTP VERIFICATION</b></h5>
-            <form class="row my-5">
-              <div class="otp-container">
-                <div>
-                  <input type="text" name="digit-1" class="otp">
+    <main>
+        <div class=" container-fluid mb-5 mx-0 main-body">
+            <div class="row">
+                <div class="col-md-7 ms-n5">
+                    <!-- <div class="container"> -->
+                    <img src="{{url('bundles/images/landing/blog-pics2.png')}}" class="h-0 w-100" alt="">
                 </div>
-                <div>
-                  <input type="text" name="digit-2" class="otp">
+                <!-- </div> -->
+                <div class="container px-5 col-md-5">
+                    <div>
+                        <h5 class="text-center text-dark mb-3 customize-font mt-5"><b>{{ __('Enter OTP send to your Email') }}</b></h5>
+                        @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                        
+                     <form method="POST" action="{{url('otp_verify')}}">
+                        @csrf            
+                            <div class="col-12 mb-4">
+                                <div class="form-outline">
+                                     <input id="otp" type="text" class="form-control @error('otp') is-invalid @enderror" name="otp" value="{{ old('otp') }}" required autocomplete="otp" autofocus>
+                                      @error('otp')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                                    <label class="form-label" for="otp"></label>
+                                </div>
+                            </div>
+                         <div class="col-auto mt-3 d-flex">
+                                <button type="submit" class="btn button-color me-5 mb-3"> {{ __('Activate') }}</button>
+                            </div>
+                    </form>
                 </div>
-                <div>
-                  <input type="text" name="digit-3" class="otp">
+                    </div>
+                    
+                   
                 </div>
-                <div>
-                  <input type="text" name="digit-4" class="otp">
-                </div>
-                <div>
-                  <input type="text" name="digit-5" class="otp">
-                </div>
-              </div>
-              <p class="otp-resend text-center my-4"><a style="color: #F51111; font-weight: 700;" href="">RE SEND OTP?</a></p>
-              <div class="otp-btn-container mx-auto my-5">
-                <button type="button">Submit</button>
-              </div>
-            </form>
-          </div>
-        </div>
 
-      </div>
-    </div>
-     <div class="container-fluid my-5">
-          <div class="my-slider">
-            <div><img src="{{url('bundles/images/landing/HIPSTER.png')}}" alt=""></div>
-            <div><img src="{{url('bundles/images/landing/VONDE.png')}}" alt=""></div>
-            <div><img src="{{url('bundles/images/landing/norway.png')}}" alt=""></div>
-            <div><img src="{{url('bundles/images/landing/avante.png')}}" alt=""></div>
-            <div><img src="{{url('bundles/images/landing/matuska.png')}}" alt=""></div>
-            <div><img src="{{url('bundles/images/landing/tylertone.png')}}" alt=""></div>
-            <div><img src="{{url('bundles/images/landing/neoquen.png')}}" alt=""></div>
-            <div><img src="{{url('bundles/images/landing/orange.png')}}" alt=""></div>
-            <div><img src="{{url('bundles/images/landing/HIPSTER.png')}}" alt=""></div>
-            <div><img src="{{url('bundles/images/landing/VONDE.png')}}" alt=""></div>
-            <div><img src="{{url('bundles/images/landing/norway.png')}}" alt=""></div>
-            <div><img src="{{url('bundles/images/landing/avante.png')}}" alt=""></div>
-            <div><img src="{{url('bundles/images/landing/matuska.png')}}" alt=""></div>
-            <div><img src="{{url('bundles/images/landing/tylertone.png')}}" alt=""></div>
-            <div><img src="{{url('bundles/images/landing/neoquen.png')}}" alt=""></div>
-            <div><img src="{{url('bundles/images/landing/orange.png')}}" alt=""></div>
-          </div>
+            </div>
+     
         </div>
       </div>
-  </main>
+    </main>
 
 @endsection('content')
