@@ -116,18 +116,7 @@
                    <div style=" height:3rem" class="input-group mb-3">
                   <input placeholder="Search" type="text" class="form-control h-100"
                     aria-label="Text input with dropdown button" name="search" required>
-                 <!--  <button style="font-size: 14px; text-transform: inherit;"
-                    class="btn btn-outline-secondary text-dark dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                    aria-expanded="false"><b>Category</b></button>
-                  <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    <li>
-                      <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item" href="#">Separated link</a></li>
-                  </ul> -->
+                 
                   <button type="submit" style="border-radius: 0px; background-color: #23A6F0; height: 100%; padding: 0.5rem 1rem"
                     class="input-group-text pb-2 border-0 d-lg-flex"><i class="fas fa-search text-white"></i></button type="submit">
                 </div>
@@ -136,38 +125,46 @@
 
             <div class="col-md-4 d-flex justify-content-center justify-content-md-end align-items-center">
               <div class="d-flex me-3">
-
-
-                <!-- Cart -->
-                <!-- <p style="font-size: 0.7rem;" class="me-2 pt-2 mb-0">Add item inside my bag</p> -->
                
-                  <a class="text-reset" href="{{url('wishlist')}}" id="navbarDropdownMenuLink"
-                    >
-                    <!-- <img src="/bundles/images/lit-icons/Icon.png" alt=""> -->
-                    <!-- <img src="{{url('bundles/images/lit-icons/Icon.png')}}"  alt=""> -->
-                    <span class="badge rounded-pill badge-notification bg-danger"></span>
-<img src="bundles/images/lit-icons/Vector.png" style="margin-right: -0.4rem; font-size: 20px;" alt="">
-                  
+                  <a class="text-reset" href="{{url('wishlist')}}"  >
+                    
+                    <span > <i class="badge rounded-pill badge-notification bg-danger"> </i></span>
 
+                    @php
+                   $user=Auth::user();
+                   if($user){
+                    @endphp
+                       <span class="badge rounded-pill badge-notification bg-danger">@php  $count = DB::table('wishlists')->where('user_id',$user->id)->count(); if($count!=0){ echo $count; }  @endphp</span>
+                       @php
+                     }else{
+                    @endphp
+                     <span class="badge rounded-pill badge-notification bg-danger"> @php   $wishlist = session()->get('wishlist')?? []; 
+                     $count = count($wishlist);  if($count!=0){ echo $count; }  @endphp</span>
+                    @php
+                  }
+                    @endphp
+                    <img src="bundles/images/lit-icons/Vector.png" style="margin-right: -0.4rem; font-size: 20px;" alt="">
+                  
                   </a>
-                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-                    <li><a class="dropdown-item" href="#">check my cart</a></li>
-                    <li><a class="dropdown-item" href="#">Clears</a></li>
-                    <li>
-                      <a class="dropdown-item" href="#">New Order</a>
-                    </li>
-                  </ul>
+                  
                 </div>
 
                 <!-- Notification -->
                 <a class="text-reset mt-2 me-3" href="{{url('cart')}}">
-                  <!-- <img src="{{url('bundles/images/svgs/carts 1.svg')}}" alt=""> -->
                   <span><i class="fas fa-shopping-cart"> </i></span>                              
-                   @auth
-                          <span class="badge rounded-pill badge-notification bg-danger">{{$count}}</span>
-                        
-                    @endauth
-                     <span class="badge rounded-pill badge-notification bg-danger"></span>
+                   @php
+                   $user=Auth::user();
+                   if($user){
+                    @endphp
+                       <span class="badge rounded-pill badge-notification bg-danger">@php  $count = DB::table('carts')->where('user_id',$user->id)->where( 'status',0)->count(); if($count!=0){ echo $count; }  @endphp</span>
+                       @php
+                     }else{
+                    @endphp
+                     <span class="badge rounded-pill badge-notification bg-danger"> @php   $cart = session()->get('cart')?? []; 
+                    $count = count($cart); if($count!=0){echo $count;} @endphp</span>
+                    @php
+                  }
+                    @endphp
                 </a>
               </div>
             </div>

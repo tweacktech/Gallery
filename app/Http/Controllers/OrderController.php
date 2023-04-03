@@ -10,16 +10,30 @@ use DB;
 use Alert;
 class OrderController extends Controller
 {
+     public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $user = Auth::user();
         $order = Order::where('user_id',$user->id)->get();
-        $count = DB::table('carts')->where('user_id',$user->id)->where( 'status',0)->count();
-        return view('customer.order', compact('order','count'));
+        $carts = DB::table('carts')->where('user_id',$user->id)->where( 'status',2)->join('products','products.id','carts.product_id')->select('products.name','products.id as pid','products.price','products.image','products.description','carts.id as cid','carts.quantity','carts.created_at')->get();
+        return view('customer.order', compact('carts'));
+    }
+
+
+  public function payment_history()
+    {
+        $user = Auth::user();
+        $order = Order::where('user_id',$user->id)->get();
+        
+        return view('customer.payment_history', compact('order'));
     }
 
     public function store(Request $request)
     {
+
         $user = Auth::user();
         $carts = Cart::where('user_id',$user->id)->get();
         $total = $request->total;

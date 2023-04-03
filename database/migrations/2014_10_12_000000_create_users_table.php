@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('country')->nullable();
             $table->string('state')->nullable();
             $table->string('email')->unique();
-            $table->BigInteger('phone_number');
+            $table->BigInteger('phone_number')->nullable();
             $table->string('provider_id')->nullable();
             $table->string('otp')->nullable();
             $table->BigInteger('status')->default(0);

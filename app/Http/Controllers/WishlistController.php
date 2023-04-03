@@ -11,18 +11,17 @@ use Alert;
 
 class WishlistController extends Controller
 {
-      public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
+    
     public function index()
     {
         $user = Auth::user();
+        if ($user) {
+            // code...
+        
         $wishlists = DB::table('wishlists')->where('user_id',$user->id)->join('products','products.id','wishlists.product_id')->select('products.name','products.price','wishlists.id')->get();
-         $count = DB::table('carts')->where('user_id',$user->id)->where( 'status',0)->count();
-
-        return view('customer.wishlist', compact('wishlists','count'));
+        return view('customer.wishlist', compact('wishlists'));
+    }
+    
     }
 
     public function store(Request $request)
@@ -41,7 +40,6 @@ class WishlistController extends Controller
          Alert::success('Success', 'Item added successful.');
 
         return redirect()->back()->with('success','Item added to wishlist');
-        // return redirect()->route('wishlists.index');
     }
 
     public function destroy($id)

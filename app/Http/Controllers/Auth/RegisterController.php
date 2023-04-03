@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use DB;
+use Alert;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
@@ -78,32 +79,28 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $otp = Str::random(6);
-        // $verication=Str::random(6);
+     
         $data= User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'country' => $data['country'],
             'email' => $data['email'],
-            'phone_number' => $data['code']+$data['phone_number'],
+            'phone_number' => $data['phone_number'],
             'otp' => $otp,
             'password' => Hash::make($data['password']),
         ]);
-
-
-return $data;
-
-         // $data->notify(new OtpNotification($data->otp));
-
         // Notification::send($data, new OtpNotification($data->otp));
+
+if ($data) {
+    $data->notify(new OtpNotification($data->otp));
+    Alert('success', 'Account successfully created, check you email to complete registration');
+ return $data;
+}        
     }
 
 
 
 
-public function try(Request $request){
-
-    return $request->input('state');
-}
 
 
 public function redirectToGoogle()
@@ -129,6 +126,7 @@ public function handleGoogleCallback()
             'email' => $user->email,
             'phone_number' => $user->phone_number,
             'otp' => $otp,
+             'status' => 1,
             'password' => Hash::make('12345678'),       
         ]);
 
@@ -138,11 +136,18 @@ public function handleGoogleCallback()
     return redirect()->intended('/');
 }
 
+public function verify()
+{
+
+    return view('customer.otp');
+
+}
 
 public function otp($otp)
 {
      $tp=1;
     $user = DB::table('users')->where('otp',$otp)->update(['status'=>1]);
+    Alert('success', 'Account successfully activated');
   return redirect('/login')->with('status','acount activated');
 
 }

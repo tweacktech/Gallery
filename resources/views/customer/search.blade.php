@@ -146,7 +146,7 @@
                                 <div class="img-border">
                                     <div class="hovereffect">
                                         <div class="slider-image">
-                                             <img src="{{url('/products',$product->image)}}"
+                                             <img src="/products/{{$product->image}}"
                                                 class="d-block w-100" alt="...">
                                         </div>
                                         

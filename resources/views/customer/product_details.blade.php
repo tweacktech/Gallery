@@ -18,15 +18,15 @@
                         <div class="col-md-6">
                             <div class="product-container">
                                 <div>
-                                    <img class="img-fluid" src="{{url('/products',$products->image)}}" alt="">
+                                    <img class="img-fluid" src="/products/{{$products->image}}" alt="">
                                 </div>
                             </div>
                             <div class="d-flex">
-                                <div class="sub-product"><img src="{{url('/products',$products->image)}}" class="img-fluid" alt=""
+                                <div class="sub-product"><img src="/products/{{$products->image}}" class="img-fluid" alt=""
                                         srcset=""></div>
-                                <div class="mx-2 sub-product"><img src="{{url('/products',$products->image)}}" class="img-fluid" alt=""
+                                <div class="mx-2 sub-product"><img src="/products/{{$products->image}}" class="img-fluid" alt=""
                                         srcset=""></div>
-                                <div class="sub-product"><img src="{{url('/products',$products->image)}}" class="img-fluid" alt=""
+                                <div class="sub-product"><img src="/products/{{$products->image}}" class="img-fluid" alt=""
                                         srcset=""></div>
                             </div>
                         </div>

@@ -89,15 +89,15 @@ $m=0;
                                             <span style="font-size: 1.3rem;" class=" fw-bolder">{{$carts->quantity}}</span>
                                         </div>
                                         <div class="d-flex flex-column">
-                                            <a href="{{url('add_quantity_cart',$carts->pid)}}" 
+                                            <a href="{{url('add_quantity_cart',$carts->cid)}}" 
                                                 style="padding-top: 0.2rem; padding-bottom: 0.2rem; background-color: #DBDFE3;"
                                                 class="d-block border-0">+</a>
-                                            <a href="{{url('sub_quantity_cart',$carts->pid)}}"
+                                            <a href="{{url('sub_quantity_cart',$carts->cid)}}"
                                                 style="padding-top: 0.2rem; padding-bottom: 0.2rem; background-color: #DBDFE3;"
                                                 class="d-block border-0">-</a>
                                         </div>
                                          
-                    <a href="{{url('remove_cart',$carts->id)}}" class="btn btn-danger" style="height: 30px;" >X</a>
+                    <a href="{{url('remove_cart',$carts->cid)}}" class="btn btn-danger" style="height: 30px;" >X</a>
                  
                                     </div>
 
@@ -110,8 +110,15 @@ $m=0;
     <div class="col-lg-4 pb-5"> <hr>
  <form action="{{ url('checkout') }}" method="POST" class="p-6">
                 @csrf
-                <input type="number" value="{{$sum}}" hidden name="total">
+                <input type="number" value="{{$m}}" hidden name="total">
+
+                @php if($m==0){
+
+                    echo "  ";
+                }else{
+                    @endphp
                 <button type="submit" class="btn btn-primary">Checkout ₦{{ $m}}</button>
+                @php } @endphp
             </form>
              </div>
     </div>

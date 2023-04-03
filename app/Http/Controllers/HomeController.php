@@ -28,26 +28,25 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user('id');
-       $count = DB::table('carts')->where('user_id',$user->id)->where( 'status',0)->count();
         $wallet=DB::table('wallets')->where('user_id',$user->id)->sum('ballance');
-           return view('customer.dashboard',compact('user','count','wallet'));
+           return view('customer.dashboard',compact('user','wallet'));
     }
 
 
      public function update()
     {
         $user = Auth::user('id');
-       $count = DB::table('carts')->where('user_id',$user->id)->where( 'status',0)->count();
+      
 
-        return view('customer.update_user',compact('user','count'));
+        return view('customer.update_user',compact('user'));
     }
 
      public function profile()
     {
         $user = Auth::user('id');
-       $count = DB::table('carts')->where('user_id',$user->id)->count();
+       
          $wallet=DB::table('wallets')->where('user_id',$user->id)->sum('ballance');
-        return view('customer.profile',compact('user','count','wallet'));
+        return view('customer.profile',compact('user','wallet'));
     }
 
 
@@ -90,18 +89,5 @@ class HomeController extends Controller
     }
 
 
-
-
-
-
-
-    public function handleGoogleCallback(Request $request)
-{
-    $user = Socialite::driver('google')->user();
-
-    // Add your logic to handle the authenticated user here
-
-    return redirect('/dashboard');
-}
 
 }

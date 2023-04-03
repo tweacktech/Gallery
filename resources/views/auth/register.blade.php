@@ -118,4 +118,4 @@
     </main>
 
 @endsection('content')
-<script type="module" src="{{url('/js/signup.js')}}"></script>
+<script type="module" src="/js/signup.js"></script>

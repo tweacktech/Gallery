@@ -19,27 +19,18 @@ class ProductController extends Controller
         $category = Category::all();
             return view('customer.products', compact('products','category'));
          }
-        $count = DB::table('carts')->where('user_id',$user->id)->where( 'status',0)->count();
         $products = DB::table('products')->SimplePaginate(10);
         $category = Category::all();
-        return view('customer.products', compact('products','category','count'));
+        return view('customer.products', compact('products','category'));
     }
 
 
 
  public function bath()
     {
-         $user = Auth::user('id');
-         if (!$user) {
-             // code...
-            $products = DB::table('products')->SimplePaginate(10);
-        $category = Category::all();
-            return view('customer.bath', compact('products','category'));
-         }
-        $count = DB::table('carts')->where('user_id',$user->id)->where( 'status',0)->count();
         $products = DB::table('products')->SimplePaginate(10);
         $category = Category::all();
-        return view('customer.bath', compact('products','category','count'));
+        return view('customer.bath', compact('products','category'));
     }
 
     public function create()
@@ -69,12 +60,12 @@ class ProductController extends Controller
         $user = Auth::user('id');
         if ($user) {
              $products = Product::findOrFail($id);       
-        $count = DB::table('carts')->where('user_id',$user->id)->where( 'status',0)->count();
-      return view('customer.product_details', compact('count','products'));
+      
+      return view('customer.product_details', compact('products'));
         }
           $products = Product::findOrFail($id);       
-        $count = 0;
-         return view('customer.product_details', compact('count','products'));
+        
+         return view('customer.product_details', compact('products'));
        
     }
 
@@ -88,8 +79,8 @@ class ProductController extends Controller
             ->orWhere('description', 'LIKE', "%{$search}%")
             ->get();
             $category = Category::all();
-        $count = DB::table('carts')->where('user_id',$user->id)->where( 'status',0)->count();
-        return view('customer.search', compact('products','count','category'));
+        
+        return view('customer.search', compact('products','category'));
         }
 
         $search=$request->input('search');
@@ -97,9 +88,9 @@ class ProductController extends Controller
             ->where('name', 'LIKE', "%{$search}%")
             ->orWhere('description', 'LIKE', "%{$search}%")
             ->get();
-        $count =0;
+        
         $category = Category::all();
-        return view('customer.search', compact('products','count','category'));
+        return view('customer.search', compact('products','category'));
     }
 
     public function edit($id)

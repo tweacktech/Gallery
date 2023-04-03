@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Cart;
+use App\Models\Product;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
 use App\Models\Social;
@@ -69,11 +72,7 @@ public function handleGoogleCallback()
             'country' => $user->country,
             'email' => $user->email,
             'status' => 1,
-            
         ]);
-
-        // auth()->login($newUser, true);
-        // Auth::login($newUser);
         $newUser = Auth::user();
       
                 return redirect()->intended('dashboard');
@@ -146,5 +145,43 @@ public function handleToLinkinleCallback()
     return redirect()->intended('/dashboard');
 }
 
+
+public function mergeCart(Request $request)
+{
+    
+    if ($user = Auth::user()) {
+        // code...
+    
+    $cart = session()->get('cart');
+
+    if ($cart) {
+        foreach ($cart as $key => $item) {
+            $product = Product::findOrFail($item['product_id']);
+
+            $userCart = Cart::where('user_id', $user->id)
+                ->where('product_id', $product->id)
+                ->first();
+            if ($userCart) {
+                $userCart->update([
+                    'quantity' => $userCart->quantity + $item['quantity'],
+                ]);
+            } else {
+                Cart::create([
+                    'user_id' => $user->id,
+                    'product_id' => $product->id,
+                    'quantity' => $item['quantity'],
+                    'price' => $product->price,
+                ]);
+            }
+        }
+
+        session()->forget('cart');
+
+        return redirect()->intended('cart')->with('success', 'Cart items have been merged to your account.');
+    }
+
+    return redirect()->intended('cart')->with('warning', 'No items found in your cart.');
+}
+}
 
 }

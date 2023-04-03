@@ -18,7 +18,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <center><h3>Order History</h3></center>
+                    <center><h3>Order History</h3></center> <div style="float: right;"> <a href="{{url('payment_history')}}">Payment History</a></div>
                  </div>
 
                 <div class="card-body">   
@@ -29,18 +29,26 @@
     <thead>
       <tr>
         <th>#</th>
-        <th>TITLE</th>
-        <th>STATUS</th>
-        <th>ACTIONS</th>
+        <th>IMAGE</th>
+        <th>NAME</th>
+        <th>PRICE</th>
+        <th>QUANTITY</th>
+        <th>TOTAL PRICE</th>
+        <th>DATE</th>
         
       </tr>
     </thead>
     <tbody>
-        @foreach($order as $da)
+        @php $num=0;@endphp
+        @foreach($carts as $da)
       <tr>       
-        <td>#</td>
-        <td>NGN{{$da->total_price}}</td>
-        <td> @php  if($da->status==0){echo 'Pendin';}else{ echo 'Paid';}     @endphp</td>
+        <td>{{$num+=1}}</td>
+        <td><img src="/products/{{$da->image}}" style="width:30%; "></td>
+        <td>{{$da->name}}</td>
+        <td>NGN {{$da->price}}</td>
+        <td>{{$da->quantity}}</td>
+        <td>NGN {{$da->price*$da->quantity}}</td>
+       
         <td >{{$da->created_at}} </td>
   @endforeach
       </tr>
@@ -58,7 +66,7 @@
 
                 </div>
                 <div class="card-header">
-                    <b >Remove </b>
+                  
                  </div>
             </div>
         </div>

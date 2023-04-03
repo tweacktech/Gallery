@@ -15,41 +15,48 @@
         <div class="col-lg-10 p-3">
             <div class="card">
                 <div class="card-header">
-                    <b >Cart {{$count}}</b>
+                    <b > AMOUNT: {{ $orders }}</b>
                  </div>
 
                 <div class="card-body">   
          <div class="row">
-             <div class="col-lg-4">
-               <p>Amount: {{ $orders }}</p>
-            </div>        
+                
            <div class="col-lg-4">
 
 
              <form id="paymentForm">
     <input type="email" hidden id="email-address" value="{{Auth::user()->email}}" required />
 
-
-
-
     <input type="tel" id="amount" value="{{$orders}}" required  hidden />
-
-
-  
 
     <input type="text" id="first-name" value="{{Auth::user()->first_name}}" hidden  />
 
-
-
   <div class="form-submit">
+     @php if($orders==0){
 
-    <button class="btn btn-secondary btn-lg" type="submit" onclick="payWithPaystack()"> PAY {{ $orders}} </button>
-
+                    echo "  ";
+                }else{
+                    @endphp
+                 <button class="btn btn-secondary btn-lg" type="submit" onclick="payWithPaystack()"> PAY WIHT PAYSTACK  </button>
+                @php } @endphp
   </div>
 
 </form>
              
            </div>
+
+
+           <div class="col-lg-4">  </div>
+
+
+           <div class="col-lg-4"> 
+
+            <form method="POST" action="{{url('wallet_pay')}}" >
+              @csrf
+            <input type="number" name="amount" value="{{$orders}}" hidden > 
+             <button class="btn btn-info btn-lg" type="submit"> PAY WITH WALLET {{ $wallet}} </button>
+          </form>
+            </div>
            
          </div>                                 
                 </div>

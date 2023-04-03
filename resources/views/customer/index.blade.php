@@ -93,7 +93,7 @@
             
             <div class="pt-4">
               <div class="hovereffect">
-                <div class=""><img src="{{url('/products',$products->image)}}" class="d-block w-100"
+                <div class=""><img src="/products/{{$products->image}}" class="d-block w-100"
                     alt="...">
                 </div>
                 <!-- <img class="img-responsive" src="bundles/images/landing/card-cover-5.jpg" alt=""> -->
@@ -169,8 +169,9 @@
             <div id="my-slider-2" class="my-slider-2">
               @foreach($category as $Category)
               <div>
-                <div class="icon-bg-1 icon-body"><img class="d-block w-100"
-                    src="{{url('bundles/images/lit-icons/pacifier 1.png')}}" alt="">
+                <div class="icon-bg-1 icon-body">
+                  <img class="d-block w-100"
+                    src="{{url('category/',$Category->image)}}" alt="">
                     {{$Category->name}}
                 </div>
               </div>

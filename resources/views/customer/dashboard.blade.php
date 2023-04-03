@@ -1,7 +1,6 @@
 @extends('layouts.header')
 
 @section('content')
- 
     <main>
         <div style="margin: 2rem 3rem 4rem 8rem;">
             <div class="row">
@@ -24,6 +23,8 @@
                                 <li><img src="bundles/images/lit-icons/user-profile.png" alt="">
                                  <a  href="{{url('profile')}}"  class="ms-2">Profile</a></li>
                                 <li><img src="bundles/images/lit-icons/settings.png" alt=""> <a href="{{url('Update')}}" class="ms-2">Account Manager</a></li>
+
+                                <li><img src="bundles/images/lit-icons/settings.png" alt=""> <a href="{{url('add_wallet')}}" class="ms-2">TOPUP Wallet</a></li>
                             <li class="pt-4">
                               <a class="btn btn-primary" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
